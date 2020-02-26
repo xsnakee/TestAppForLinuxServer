@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  test_app_for_linux:
+    image: ${DOCKER_REGISTRY}xsnakee/test_app_for_linux
+    build:
+      context: .
+      dockerfile: TestAppForLinuxServer/Dockerfile
+    ports:
+      - 5000:80
+  
+  proxy:
+    image: nginx:latest
+    volumes: 
+     - ./TestAppForLinuxServer/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+     - 80:80

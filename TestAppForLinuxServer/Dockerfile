@@ -5,10 +5,10 @@ EXPOSE 443
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY ["TestAppForLinuxServer.csproj", "TestAppForLinuxServer.csproj"]
-RUN dotnet restore "TestAppForLinuxServer.csproj"
+COPY ["TestAppForLinuxServer/TestAppForLinuxServer.csproj", "TestAppForLinuxServer/"]
+RUN dotnet restore "TestAppForLinuxServer/TestAppForLinuxServer.csproj"
 COPY . .
-WORKDIR "/src"
+WORKDIR "/src/TestAppForLinuxServer"
 RUN dotnet build "TestAppForLinuxServer.csproj" -c Release -o /app
 
 FROM build AS publish

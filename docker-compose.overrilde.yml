@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+    test_app_for_linux:
+        environment:
+            -   ASPNETCORE_ENVIRONMENT=Developer
+        ports:
+            -   "80"
